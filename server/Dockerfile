@@ -12,6 +12,6 @@ RUN dotnet publish -c Release -o publish
 
 FROM mcr.microsoft.com/dotnet/sdk:7.0 as final-env
 WORKDIR /app
-COPY ./Images /app/Images
+COPY /server/Images /app/Images
 COPY --from=build-env /app/publish .
 ENTRYPOINT ["dotnet", "server.dll"]
