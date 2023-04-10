@@ -1,5 +1,5 @@
 import { IComment, ILike } from "../modules/modules";
-import { BsTrash } from "react-icons/Bs";
+import { BsTrash } from "react-icons/bs";
 import { AiFillEdit } from "react-icons/ai";
 import { MdDone } from "react-icons/md";
 import deleteComment from "../api/Comment/deleteComment";

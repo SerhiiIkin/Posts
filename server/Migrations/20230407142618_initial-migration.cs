@@ -5,7 +5,7 @@
 namespace server.Migrations
 {
     /// <inheritdoc />
-    public partial class postCommentLength : Migration
+    public partial class initialmigration : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)

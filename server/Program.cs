@@ -14,7 +14,12 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddAuthentication().AddJwtBearer();
 
-builder.Services.AddDbContext<ApiContext>(opt => opt.UseSqlServer(builder.Configuration.GetConnectionString("ConnectionString")));
+
+
+var ConnectionString = builder.Configuration.GetConnectionString("ConnectionString");
+
+
+builder.Services.AddDbContext<ApiContext>(opt => opt.UseNpgsql(ConnectionString));
 
 builder.Services.AddControllersWithViews()
     .AddJsonOptions(o => {
@@ -26,11 +31,8 @@ builder.Services.AddControllersWithViews()
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
-if (app.Environment.IsDevelopment())
-{
-    app.UseSwagger();
-    app.UseSwaggerUI();
-}
+app.UseSwagger();
+app.UseSwaggerUI();
 
 app.UseCors(policy => policy.AllowAnyOrigin().AllowAnyHeader().AllowAnyMethod());
 

@@ -1,5 +1,5 @@
 export const environments = {
-    baseUrl: "http://localhost:5073/api/",
-    uploadImgUrlUser: "http://localhost:5073/Images/Users/",
-    uploadImgUrlPost: "http://localhost:5073/Images/Posts/",
+    baseUrl: import.meta.env.VITE_API_URL + "api/",
+    uploadImgUrlUser: import.meta.env.VITE_API_URL + "Images/Users/",
+    uploadImgUrlPost: import.meta.env.VITE_API_URL + "Images/Posts/",
 };

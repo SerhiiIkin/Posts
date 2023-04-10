@@ -1,0 +1,50 @@
+version: "3.4"
+networks:
+    dev:
+        driver: bridge
+services:
+    client:
+        container_name: client-services
+        build:
+            context: ./client
+            dockerfile: ./client/Dockerfile
+        image: docker.io/library/posts-client
+        ports:
+            - "3000:4173"
+        depends_on:
+            - webapi
+        networks:
+            - dev
+        environment:
+            - VITE_API_URL=http://localhost:5000
+    webapi:
+        container_name: webapi-services
+        image: docker.io/library/posts-server
+        build:
+            context: ./server
+            dockerfile: ./server/Dockerfile
+        depends_on:
+            - posts_db
+        ports:
+            - "5000:80"
+        environment:
+            - ConnectionStrings__ConnectionString=User Id=postgres;Password=postgres;Server=posts_db;Port=5432;Database=SampleDbDriver;IntegratedSecurity=true;Pooling=true;
+            - ASPNETCORE_URLS=http://+:80
+        networks:
+            - dev
+    posts_db:
+        image: postgres:latest
+        container_name: posts_db
+        environment:
+            - POSTGRES_USER=postgres
+            - POSTGRES_PASSWORD=postgres
+            - POSTGRES_DB=SampleDb
+        ports:
+            - "5433:5432"
+        restart: always
+        volumes:
+            - posts_data:/var/lib/postgresql/data
+        networks:
+            - dev
+volumes:
+    posts_data:

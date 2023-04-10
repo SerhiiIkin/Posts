@@ -2,7 +2,7 @@ import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import classNames from "classnames";
 import { ChangeEvent, useEffect, useMemo, useRef, useState } from "react";
 import { AiFillEdit } from "react-icons/ai";
-import { BsTrash } from "react-icons/Bs";
+import { BsTrash } from "react-icons/bs";
 import { MdDone } from "react-icons/md";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import deletePost from "../api/Post/deletePost";

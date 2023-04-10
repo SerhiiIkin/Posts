@@ -4,9 +4,13 @@
     "description": "",
     "main": "index.js",
     "scripts": {
-        "start": "concurrently \"cd server && dotnet watch run \"  \"npm start --prefix client\""
+        "start": "concurrently \"cd server && dotnet watch run \"  \"npm run dev --prefix client\"",
+        "dev": "yarn --cwd client dev"
     },
     "keywords": [],
     "author": "",
-    "license": "ISC"
+    "license": "ISC",
+    "dependencies": {
+        "vite": "^4.2.1"
+    }
 }
