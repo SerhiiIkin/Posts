@@ -18,6 +18,13 @@ namespace server.Controllers
         }
 
         [HttpGet]
+        public async Task<IActionResult> GetTest () {
+            
+
+            return Ok("test is ok");
+        }
+
+        [HttpGet]
         public async Task<ActionResult<List<Post>>> GetPosts () {
             var posts = await _context.Posts.ToListAsync();
             if(posts.Count < 0 && posts == null) {

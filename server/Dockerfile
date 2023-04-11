@@ -15,3 +15,5 @@ WORKDIR /app
 COPY ./Images /app/Images
 COPY --from=build-env /app/publish .
 ENTRYPOINT ["dotnet", "server.dll"]
+
+#docker run -dp 5000:80 --rm  -e ASPNETCORE_URLS=http://+:80 posts-server
