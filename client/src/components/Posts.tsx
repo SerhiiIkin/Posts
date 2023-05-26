@@ -42,12 +42,13 @@ function Posts() {
         });
     }, [posts]);
 
-    if (status == "loading") return <Loader />;
-    if (status === "error") return <h2>Error! No posts!</h2>;
+    
+    if (status === "error") return <h2 className="text-center text-red-400 text-xl">Error! No posts!</h2>;
 
     return (
         <div className="flex flex-col gap-4 pb-4">
-            {sortedPosts?.length! <= 0 && <div>No Posts</div>}
+            {sortedPosts?.length! <= 0 && <h2 className="text-center">No Posts</h2>}
+            {status === "loading" && <Loader/>}
             {sortedPosts?.map((post) => (
                 <Link
                     onClick={() => onPostListClick(post.Id!)}

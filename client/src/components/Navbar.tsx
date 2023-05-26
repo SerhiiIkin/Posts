@@ -1,4 +1,4 @@
-import { useMemo } from "react";
+import { useMemo, useState } from "react";
 import { Link } from "react-router-dom";
 import { environments } from "../environments";
 import { useLoginStore } from "../store/store";
@@ -49,25 +49,22 @@ function Navbar() {
                 </>
             ) : (
                 <div className="group relation cursor-pointer">
-                    <label htmlFor="title">
-                        Auth
-                        <div
-                            className={classNames(
-                                "hidden group-hover:flex group-focus:flex flex-col absolute p-1 rounded bg-slate-600 min-w-max z-10"
-                            )}>
-                            <Link
-                                className="xl:hover:bg-blue-400 rounded p-1"
-                                to={"/login"}>
-                                Login
-                            </Link>
-                            <Link
-                                className="xl:hover:bg-blue-400 rounded p-1"
-                                to={"/registration"}>
-                                Registration
-                            </Link>
-                        </div>
-                    </label>
-                    <input id="title" type="checkbox" className="hidden" />
+                    Auth
+                    <div
+                        className={classNames(
+                            "hidden  group-hover:flex flex-col absolute p-1 rounded bg-slate-600 min-w-max z-10"
+                        )}>
+                        <Link
+                            className="xl:hover:bg-blue-400 rounded p-1 "
+                            to={"/login"}>
+                            Login
+                        </Link>
+                        <Link
+                            className="xl:hover:bg-blue-400 rounded p-1 "
+                            to={"/registration"}>
+                            Registration
+                        </Link>
+                    </div>
                 </div>
             )}
         </nav>
